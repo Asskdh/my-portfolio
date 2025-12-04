@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home — Simple Starter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- —— Header —— -->
+  <header>
+    <div class="wrap">
+      <div class="brand">MyPortfolio</div>
+      <nav>
+        <div class="dropdown" id="worksDropdown">
+          <a href="our-works.html" aria-haspopup="true" aria-expanded="false">
+            Our Works <span class="caret">▾</span>
+          </a>
+          <div class="dropdown-menu" role="menu" aria-label="Our Works">
+            <a href="calc.html" role="menuitem">Calculator</a>
+            <a href="notes.html" role="menuitem">Notes</a>
+            <a href="typing-test.html" role="menuitem">Typing Test</a>
+          </div>
+        </div>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+        <button id="themeToggle" class="theme-btn" aria-pressed="false" title="Toggle dark mode">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- —— Hero —— -->
+  <section class="hero" id="top">
+    <div class="inner">
+      <h1>Hi, I'm Ala</h1>
+      <p>
+        I’m a Computer Science student at UC Santa Cruz building small web tools
+        like a big-number calculator, notes app, and typing test.
+        Hover over <strong>Our Works</strong> to open the dropdown with links to each project.
+      </p>
+      <form id="siteSearch" class="search" action="#our_works">
+        <input type="text" class="se" placeholder="Something specific on your mind" aria-label="Search" />
+        <button type="submit" aria-label="Submit search">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- —— Our Works preview —— -->
+  <section id="our-works">
+    <div class="section-inner">
+      <h2>My Works</h2>
+      <p>Quick previews. Click any card or use the header menu.</p>
+
+      <div class="cards">
+
+        <!-- Calculator -->
+        <div class="card flip-card no-border-hover" id="calcCard">
+          <div class="card-border" aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="path" x="2" y="2" width="96" height="96" rx="14" ry="14" />
+            </svg>
+          </div>
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Calculator</h3>
+              <p>Big-number calculator that can handle very large results.</p>
+              <span class="hover-text">Click for more info</span>
+            </div>
+            <div class="card-back">
+              <p>
+                This calculator uses a custom BigNumber class to work with huge integers,
+                including addition, multiplication, powers, and factorials.
+              </p>
+              <a href="calc.html" class="card-link">Go to Calculator</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="card flip-card" id="notesCard">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Notes</h3>
+              <p>Local notes in your browser. No account, no backend.</p>
+              <span class="hover-text">Click for more info</span>
+            </div>
+            <div class="card-back">
+              <p>
+                Take quick notes directly in your browser. Everything is saved locally,
+                so your notes stay on your device with no signup needed.
+              </p>
+              <a href="notes.html" class="card-link">Go to Notes</a>
+            </div>
+          </div>
+          <div class="card-border" aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="path" x="2" y="2" width="96" height="96" rx="14" ry="14" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Typing Test -->
+        <div class="card flip-card" id="dictCard">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Typing Test</h3>
+              <p>Practice your typing speed and accuracy.</p>
+              <span class="hover-text">Click for more info</span>
+            </div>
+            <div class="card-back">
+              <p>
+                A simple typing test page where you can measure your speed,
+                accuracy, and track your improvement over time.
+              </p>
+              <a href="typing-test.html" class="card-link">Go to Typing Test</a>
+            </div>
+          </div>
+          <div class="card-border" aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="path" x="2" y="2" width="96" height="96" rx="14" ry="14" />
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- —— About Me —— -->
+  <section id="about">
+    <div class="section-inner">
+      <h2>About Me</h2>
+      <p>
+        I’m a Computer Science student at UC Santa Cruz. Before transferring,
+        I completed my general education and core CS classes at community college.
+        I enjoy building small, useful web tools and learning more about
+        programming, math, and cybersecurity.
+      </p>
+      <p>
+        This site is my playground to practice HTML, CSS, and JavaScript.
+        Right now it includes a big-number calculator, a notes app, and a typing test,
+        and I plan to keep improving and adding more projects over time.
+      </p>
+    </div>
+  </section>
+
+
+
+<section id="resume">
+  <div class="section-inner resume-wrap">
+    <h2>Resume</h2>
+    <p class="resume-desc">
+      View or download my full resume using the buttons below.
+    </p>
+
+    <div class="resume-buttons">
+      <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">
+        View Resume (PDF)
+      </a>
+
+      <a href="resume.pdf" class="resume-btn outline" download>
+        Download Resume
+      </a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- —— Contact —— -->
+  <section id="contact">
+    <div class="section-inner">
+      <h2>Contact</h2>
+      <p>
+        Email:
+        <a href="mailto:alaalawdi@outlook.com">alaalawdi@outlook.com</a>
+      </p>
+      <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/ala-alawdi/" target="_blank" rel="noopener">
+          linkedin.com/in/ala-alawdi
+        </a>
+    </div>
+  </section>
+
+  <footer>
+<small>© <span id="year"></span> Ala Alawdi Portfolio. All rights reserved.</small>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>

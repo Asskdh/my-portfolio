@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Level</title>
+  <link rel="stylesheet" href="typing-test.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="typing-test.html" class="home-btn">Typing Home</a>
+    <h1 id="level-title">Typing Level</h1>
+  </header>
+
+  <main class="container level-layout">
+    <section class="test-panel">
+      <p class="instruction">
+        Read the text below, then type it exactly in the box.
+        The timer starts when you press the first key. When you type the last
+        letter, the test will stop automatically.
+      </p>
+
+            <div class="target-box" id="target-text"></div>
+
+      <!-- Custom typing box (we control every letter) -->
+      <div
+        id="typing-input"
+        class="typing-box"
+        contenteditable="true"
+        spellcheck="false"
+      ></div>
+
+      <p id="feedback-message" class="feedback-message">&nbsp;</p>
+
+      <div class="level-stats-inline">
+        <p>Time: <span id="time-seconds">0.00</span> s</p>
+        <p>Mistakes: <span id="mistakes-count">0</span></p>
+        <p>Accuracy: <span id="accuracy">0%</span></p>
+        <p>Speed: <span id="wpm">0</span> WPM</p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Result overlay -->
+  <div id="result-overlay" class="overlay hidden">
+    <div class="result-modal">
+      <h2 id="result-title">Level Finished!</h2>
+      <p id="result-details"></p>
+
+      <div class="modal-buttons">
+        <a href="typing-test.html" class="btn-link">Typing Home</a>
+        <button id="next-level-btn" class="btn-link">Next Level</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="typing-level.js"></script>
+</body>
+</html>

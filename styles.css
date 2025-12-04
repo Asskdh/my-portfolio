@@ -1,0 +1,514 @@
+/* ---- Easy theme variables --------------------------------------- */
+:root {
+  /* colors */
+  --bg: #ffffff;
+  --text: #0f172a;           /* slate-900 */
+  --muted: #475569;          /* slate-600 */
+  --border: #e2e8f0;         /* slate-200 */
+  --brand: #233a70;          /* header background */
+  --panel: #000000;          /* dropdown panel */
+  --accent: #d0dae1;         /* CTA button */
+
+  /* sizing */
+  --wrap: 1100px;
+  --radius: 14px;
+  --pad: 16px;
+}
+
+/* ---- Reset & basics --------------------------------------------- */
+* { box-sizing: border-box; }
+html { 
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* ---- Layout helpers --------------------------------------------- */
+.wrap {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 14px var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+section {
+  padding: 70px 0;
+}
+
+
+/* ---- Header ------------------------------------------------------ */
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--brand); color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.brand { 
+  font-weight: 700;
+  letter-spacing: .5px;
+ }
+nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+nav a {
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+nav a:hover {
+  background: rgba(0, 128, 255, 0.251);
+  color: #fff;
+}
+
+
+/* ---- Dropdown (Our Works) --------------------------------------- */
+
+.dropdown { 
+  position: relative;
+}
+.dropdown > a { 
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.caret { 
+  font-size: 12px;
+  opacity: .8;
+  transition: transform .2s ease;
+}
+
+/* menu */
+.dropdown-menu {
+  position: absolute; top: calc(100% + 8px); left: 0;
+  min-width: 210px;
+  background: rgb(39, 69, 103);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius); padding: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0; transform: translateY(8px);
+  pointer-events: none; transition: opacity .18s ease, transform .18s ease;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu { 
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown:hover .caret,
+.dropdown.open .caret { 
+  transform: rotate(180deg);
+}
+
+.dropdown-menu a { 
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #e2e8f0; 
+}
+.dropdown-menu a:hover {
+  background: rgb(90, 145, 165, 0.5);
+  color: #fff; 
+}
+.hint { 
+  font-size: 12px;
+  color: #94a3b8;
+  margin-left: 6px; 
+}
+
+/* ---- Hero -------------------------------------------------------- */
+
+.hero {
+  padding: 90px var(--pad) 70px;
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    var(--brand) 0%,
+    var(--brand) 50%,
+    var(--panel) 100%
+  );
+}
+
+.hero .inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.hero p {
+  margin: 0;
+  color: hsl(0, 0%, 100%);
+  max-width: 65ch;
+}
+
+.hero .cta {
+  margin-top: 16px;
+  display: inline-block;
+  background: rgb(255, 255, 255);
+  color: rgb(59, 108, 151);
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero .cta:hover {
+  filter: brightness(1.05);
+}
+/* ---- Search (hero) ---------------------------------------------- */
+.search {
+  justify-content: space-between;
+  display: flex;                
+  align-items: center;         
+  gap: 8px;                    
+  background: #ffffff;       
+  padding: 6px;                
+  border: 1px solid var(--border); 
+  border-radius: 12px;         
+  max-width: 520px;           
+}
+.search input{
+  border: none;
+}
+.hero .search {
+  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.15); /* soft shadow only inside the hero */
+}
+
+.search input[type="search"] {
+  flex: 1;                     /* takes all the remaining space */
+  border: 0;                   /* no border */
+  outline: none;               /* remove focus outline */
+  padding: 10px 12px;          /* inner space inside input */
+  background: transparent;     /* no background (inherits from parent) */
+  color: var(--text);          /* text color from your main variable */
+}
+
+.search button {
+  margin: 0px 0px 0px 0;
+  border: 0;
+  padding: 10px 17px;
+  border-radius: 10px;
+  background: #1e3e83;
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.search button:hover {
+  filter: brightness(1.05);    /* makes the button slightly lighter on hover */
+}
+
+
+/* ---- Cards & content -------------------------------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card {
+  border: none; /* remove outer border */
+  border-radius: 16px;
+  padding: var(--pad);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.05); /* keep a soft shadow */
+}
+
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
+}
+
+/* ---- Flip card effect ------------------------------------------- */
+.flip-card {
+  perspective: 1000px; /* gives 3D depth */
+  cursor: pointer;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--pad);
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-front {
+  color: var(--text);
+}
+
+.card-front .hover-text {
+  opacity: 0;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.flip-card:hover .hover-text {
+  opacity: 1;
+}
+
+.card-back {
+  background: rgb(24, 27, 91);
+  color: #fff;
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+.card-back .card-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--panel);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-back .card-link:hover {
+  filter: brightness(1.05);
+}
+
+.flip-card {
+  position: relative; 
+}
+
+.card-border {
+  position: absolute;
+  inset: 10px;              /* how far inside the animation sits */
+  border-radius: 16px;      /* same as your card */
+  pointer-events: none;     /* allows clicks to pass through */
+}
+
+.card-border svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.card-border .path {
+  fill: none;
+  stroke: var(--accent);     /* uses your green theme color */
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 60 340;  /* 60px visible line, 340px gap */
+  stroke-dashoffset: 0;
+  opacity: 0;                /* hidden until hover */
+  transition: opacity 0.2s ease;
+  stroke-dasharray: 60 324; 
+}
+
+.flip-card:hover .card-border .path {
+  opacity: 1;
+  animation: dash-run 2.5s linear infinite;
+}
+
+
+@keyframes dash-run {
+  to {
+      stroke-dashoffset: -384; 
+      } 
+}
+
+
+
+/* ---- Footer ------------------------------------------------------ */
+footer { 
+  padding: 40px var(--pad);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  text-align: center;
+}
+/* ---- Theme toggle: dark mode variables --------------------------- */
+body.dark {
+ 
+  --bg: #0b1220;          
+  --text: #e2e8f0;        
+  --muted: #94a3b8;       
+  --border: #1f2a44;      
+  --brand: #0a0f1d;       
+  --panel: #0b1327;      
+
+}
+
+/* Make surfaces use variables so they flip with theme */
+.card,
+.card-front,
+.card-back {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.search {
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+.search input [type="search"] {
+  color: var(--text); 
+  
+}
+
+
+body.dark .hero {
+background: linear-gradient(180deg, #60709c 0%, #3d496c 50%, #0c101a 100%);
+}
+
+
+.theme-btn {
+  border: none;
+  background: transparent;
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.theme-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+body.dark .se{
+  background-color: black;
+}
+/* ---- Mobile tweaks ---------------------------------------------- */
+@media (max-width: 720px) {
+  nav { gap: 4px; }
+  .dropdown-menu { min-width: 180px; }
+  .hero { padding-top: 76px; }
+}
+.no-border-hover .card-border .path {
+    opacity: 0 !important;
+    animation: none !important;
+}
+.no-border-hover:hover .card-border .path {
+    opacity: 0 !important;
+    animation: none !important;
+}
+/* Disable hover animation in light mode */
+body:not(.dark) .flip-card:hover .card-border .path {
+  opacity: 0 !important;
+  animation: none !important;
+}
+/* Enable hover animation only in dark mode */
+body.dark .flip-card:hover .card-border .path {
+  opacity: 1 !important;
+  animation: dash-run 2.5s linear infinite !important;
+}
+
+/* ===== Resume Section Styling ===== */
+
+#resume {
+  padding: 80px 0;
+}
+
+.resume-wrap {
+  text-align: center;
+  max-width: 700px;
+}
+
+.resume-desc {
+  color: var(--muted);
+  font-size: 15px;
+  margin: 10px 0 30px;
+}
+
+/* Resume Buttons Container */
+.resume-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Base Button Style */
+.resume-btn {
+  padding: 12px 22px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 8px 20px rgba(36, 42, 115, 0.25);
+}
+
+.resume-btn:hover {
+  background: #1e2f68;
+  transform: translateY(-2px);
+}
+
+/* Outline Button */
+.resume-btn.outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
+}
+
+.resume-btn.outline:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Dark Mode Support */
+body.dark .resume-btn.outline {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+body.dark .resume-btn.outline:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+

@@ -1,0 +1,99 @@
+header{
+    background-color:  rgb(135 180 205);
+    color: white;
+    padding: 10px 0;
+}
+.header-content{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    background-color: rgb(255, 255, 255);
+}
+.home-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    background: #e0e0e0;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: 0.15s ease;
+}
+
+.home-btn:hover {
+    background: #d6d6d6;
+    transform: translateY(-2px);
+}
+
+.home-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: auto;   
+}
+
+.calculator {
+    
+    justify-content: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 400px;
+    padding: 25px 25px 30px;
+    border-radius: 25px;
+}
+.screen {
+    width: 100%;
+    height: 90px;            /* more height so we can show multiple lines */
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    font-size: 28px;         /* JS will still shrink this when needed */
+    box-sizing: border-box;
+    background: #f7f7f7;
+    outline: none;
+    resize: none;            
+    white-space: pre-wrap;   /* keep spaces/newlines & allow wrapping */
+    overflow-y: auto;        /* scroll up/down when full */
+    overflow-x: hidden;      /* no horizontal scroll */
+}
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 17px;
+    margin-top: 20px;
+}
+.buttons button {
+    border: none;
+    padding: 12px 0;
+    font-size: 18px;
+    border-radius: 10px;
+    background: #e5e5e5;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.05s ease, box-shadow 0.1s ease, background 0.1s ease;
+}
+.buttons button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+

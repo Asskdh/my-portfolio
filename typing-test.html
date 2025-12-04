@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Typing Placement Test</title>
+  <link rel="stylesheet" href="typing-test.css">
+</head>
+<body>
+  <header class="top-bar">
+    <a href="index.html" class="home-btn">Home</a>
+    <h1>Typing Placement Test</h1>
+  </header>
+
+  <main class="container home-layout">
+    <section class="test-panel">
+      <h2>Start Your Typing Journey</h2>
+      <p class="instruction">
+        You will go through 5 levels. Start from level 1 and move up.
+        After each level, we’ll tell you your typing level and show your speed.
+      </p>
+
+      <div class="home-info-row">
+        <p>Current level: <span id="current-level">1</span> / 5</p>
+        <p>Overall accuracy: <span id="overall-accuracy-home">0%</span></p>
+        <p>Overall speed: <span id="overall-wpm-home">0</span> WPM</p>
+      </div>
+
+      <button id="start-level-btn" class="primary-btn">
+        Start Level
+      </button>
+
+      <button id="reset-progress-btn" class="secondary-btn">
+        Reset Progress
+      </button>
+    </section>
+  </main>
+
+  <script src="typing-test.js"></script>
+</body>
+</html>
