@@ -1,0 +1,151 @@
+/* ===== Bolt AI Assistant ===== */
+
+#bolt-launcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+
+.bolt-robot {
+  font-size: 26px;
+}
+
+
+.bolt-tooltip {
+  position: absolute;
+  right: 70px;
+  background: #0f172a;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+
+#bolt-launcher:hover .bolt-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#bolt-bubble {
+  position: fixed;
+  top: 84px;
+  right: 20px;
+  max-width: 260px;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 9999;
+  display: none;
+}
+
+#bolt-chat {
+  position: fixed;
+  right: 20px;
+  top: 90px;
+  width: 360px;
+  height: 480px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+/* Header */
+#bolt-chat header {
+  background: #0f172a;
+  color: #fff;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#bolt-chat header span {
+  font-weight: 600;
+}
+
+#bolt-close {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Messages */
+#bolt-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.bolt-msg {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.bolt-user {
+  text-align: right;
+  color: #2563eb;
+}
+
+.bolt-ai {
+  text-align: left;
+  color: #0f172a;
+}
+
+/* Input */
+#bolt-input {
+  display: flex;
+  border-top: 1px solid #e5e7eb;
+}
+
+#bolt-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+#bolt-input button {
+  padding: 0 16px;
+  border: none;
+  background: #0f172a;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Mobile fullscreen */
+@media (max-width: 640px) {
+  #bolt-chat {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}

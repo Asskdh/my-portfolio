@@ -5,16 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="calc.css">
+
 </head>
 <body>
+
     <header>
         <div class="header-content">
             <h1>BigNumber Calculator</h1>
-        </div> 
+        </div>
     </header>
+
     <a href="index.html" class="home-btn">Home</a>
 
+    <!-- NEW: Description Box (independent div) -->
+    <div class="description-box">
+        <h2>About This Calculator</h2>
+        <p>
+            This calculator uses a custom <strong>BigNumber</strong> algorithm originally
+            written in <strong>C++</strong>.
+        </p>
+        <p>
+            The algorithm was fully rewritten in <strong>JavaScript</strong> to make it work
+            inside a web browser while keeping the same precision.
+        </p>
+        <p>
+            It can compute extremely large values such as <strong>1000!</strong>,
+            multi-thousand-digit multiplication, and huge powers like <strong>2<sup>5000</sup></strong>.
+        </p>
+    </div>
 
+    <!-- Your ORIGINAL layout wrapper (calculator centered) -->
     <div class="wrapper">
         <div class="calculator">
 
@@ -49,9 +69,12 @@
                 <button>C</button>
             </div>
         </div>
-    </div> 
-    
+    </div>
+
     <script src="BigNumber.js"></script>
     <script src="calc.js"></script>
+    <link rel="stylesheet" href="assistant.css">
+    <script src="assistant.js"></script>
+
 </body>
 </html>

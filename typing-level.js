@@ -28,7 +28,7 @@ const level5Text =
   "This final level mixes everything: numbers, commas, and quotes.\n" +
   'Typing "clean code" is like writing clear sentences for others.\n' +
   "When you're tired, pause for a minute; don't force mistakes.\n" +
-  "You've come far already—finish strong and trust your training!";
+  "You've come far already finish strong and trust your training!";
 
 const levelsTexts = [
   level1Text,

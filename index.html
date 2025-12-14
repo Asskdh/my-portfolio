@@ -5,8 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — Simple Starter</title>
   <link rel="stylesheet" href="styles.css" />
+
 </head>
 <body>
+
+<div class="night-sky">
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+  <span class="shooting-star"></span>
+
+</div>
+
   <!-- —— Header —— -->
   <header>
     <div class="wrap">
@@ -18,13 +31,15 @@
           </a>
           <div class="dropdown-menu" role="menu" aria-label="Our Works">
             <a href="calc.html" role="menuitem">Calculator</a>
-            <a href="notes.html" role="menuitem">Notes</a>
+            <a href="route.html" role="menuitem">Route Finder</a>
             <a href="typing-test.html" role="menuitem">Typing Test</a>
           </div>
         </div>
+
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
         <a href="#contact">Contact</a>
+
         <button id="themeToggle" class="theme-btn" aria-pressed="false" title="Toggle dark mode">🌙</button>
       </nav>
     </div>
@@ -35,8 +50,7 @@
     <div class="inner">
       <h1>Hi, I'm Ala</h1>
       <p>
-        I’m a Computer Science student at UC Santa Cruz building small web tools
-        like a big-number calculator, notes app, and typing test.
+        I’m a Computer Science student at UC Santa Cruz with a strong interest in programming, algorithm design, and building efficient solutions.
         Hover over <strong>Our Works</strong> to open the dropdown with links to each project.
       </p>
       <form id="siteSearch" class="search" action="#our_works">
@@ -77,8 +91,34 @@
           </div>
         </div>
 
+        <!-- Route Finder -->
+        <div class="card flip-card" id="routeCard">
+          <div class="card-inner">
+            <div class="card-front">
+              <h3>Route Finder</h3>
+              <p>Find the shortest path between cities using graph traversal.</p>
+              <span class="hover-text">Click for more info</span>
+            </div>
+        
+            <div class="card-back">
+              <p>
+                Enter a departure city and a destination, and see the shortest route
+                computed using a breadth-first search algorithm. 
+              </p>
+              <a href="route.html" class="card-link">Open Route Finder</a>
+            </div>
+          </div>
+        
+          <div class="card-border" aria-hidden="true">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <rect class="path" x="2" y="2" width="96" height="96" rx="14" ry="14" />
+            </svg>
+          </div>
+        </div>
+
+
         <!-- Notes -->
-        <div class="card flip-card" id="notesCard">
+        <!-- <div class="card flip-card" id="notesCard">
           <div class="card-inner">
             <div class="card-front">
               <h3>Notes</h3>
@@ -98,7 +138,7 @@
               <rect class="path" x="2" y="2" width="96" height="96" rx="14" ry="14" />
             </svg>
           </div>
-        </div>
+        </div> -->
 
         <!-- Typing Test -->
         <div class="card flip-card" id="dictCard">
@@ -155,11 +195,11 @@
     </p>
 
     <div class="resume-buttons">
-      <a href="resume.pdf" class="resume-btn" target="_blank" rel="noopener">
+      <a href="Resume1.pdf" class="resume-btn" target="_blank" rel="noopener">
         View Resume (PDF)
       </a>
 
-      <a href="resume.pdf" class="resume-btn outline" download>
+      <a href="Resume1.pdf" class="resume-btn outline" download>
         Download Resume
       </a>
     </div>
@@ -180,6 +220,7 @@
         <a href="https://www.linkedin.com/in/ala-alawdi/" target="_blank" rel="noopener">
           linkedin.com/in/ala-alawdi
         </a>
+      
     </div>
   </section>
 
@@ -188,5 +229,7 @@
   </footer>
 
   <script src="main.js" defer></script>
+   <link rel="stylesheet" href="assistant.css">
+  <script src="assistant.js"></script>
 </body>
 </html>

@@ -298,7 +298,7 @@ nav a:hover {
 
 .card-back {
   background: rgb(24, 27, 91);
-  color: #fff;
+  color: #48acd6;
   transform: rotateY(180deg);
   text-align: center;
 }
@@ -510,5 +510,67 @@ body.dark .resume-btn.outline:hover {
   background: var(--accent);
   color: #000;
 }
+
+/* ===== Shooting Stars Background (Dark Mode Only) ===== */
+
+body.dark .night-sky {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at bottom,
+    #0b132b 0%,
+    #020617 100%
+  );
+}
+
+/* star base */
+body.dark .shooting-star {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(120,180,255,0),
+    rgba(120,180,255,0.9)
+  );
+  filter: drop-shadow(0 0 6px rgba(120,180,255,0.8));
+  animation: shoot 4s linear infinite;
+  opacity: 0;
+}
+
+/* star positions */
+body.dark .shooting-star:nth-child(1) { left: 0%; animation-delay: 0s; }
+body.dark .shooting-star:nth-child(2) { left: 10%; animation-delay: 1s; }
+body.dark .shooting-star:nth-child(3) { left: 30%; animation-delay: 2s; }
+body.dark .shooting-star:nth-child(4) { left: 40%; animation-delay: 3s; }
+body.dark .shooting-star:nth-child(5) { left: 50%; animation-delay: 4s; }
+body.dark .shooting-star:nth-child(6) { left: 60%; animation-delay: 4s; }
+body.dark .shooting-star:nth-child(7) { left: 80%; animation-delay: 5s; }
+
+
+
+/* animation */
+@keyframes shoot {
+  0% {
+    transform: rotate(45deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(45deg) translateX(1200px);
+    opacity: 0;
+  }
+}
+
+body.dark .hero {
+  background: transparent !important;
+}
+
 
 

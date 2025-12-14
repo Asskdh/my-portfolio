@@ -1,64 +1,75 @@
+// ==============================
+// Main JS (dropdown + flip cards + dark mode)
+// ==============================
+
 // keep the year up to date
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// small JS to support touch devices: tap to open dropdown
+// ------------------------------
+// Dropdown (touch support)
+// ------------------------------
 const dropdown = document.getElementById("worksDropdown");
+
 if (dropdown) {
   const trigger = dropdown.querySelector("a");
 
-  const addTapLogic = () => {
+  const enableTapDropdown = () => {
     const narrow = window.matchMedia("(max-width: 900px)").matches;
-    if (!narrow) return;
-    const onClick = (e) => {
+
+    // On wide screens: rely on CSS hover, and ensure "open" class is removed.
+    if (!narrow) {
+      dropdown.classList.remove("open");
+      trigger?.setAttribute("aria-expanded", "false");
+      return;
+    }
+
+    // On narrow screens: tap to toggle dropdown.
+    const onTriggerClick = (e) => {
       e.preventDefault();
       dropdown.classList.toggle("open");
       const expanded = dropdown.classList.contains("open");
-      trigger.setAttribute("aria-expanded", expanded);
+      trigger.setAttribute("aria-expanded", String(expanded));
     };
-    // avoid double-binding
-    trigger.removeEventListener("click", onClick);
-    trigger.addEventListener("click", onClick);
 
-    // close when clicking outside
-    const outside = (e) => {
+    trigger?.addEventListener("click", onTriggerClick);
+
+    // Close dropdown when tapping outside.
+    const onOutsideClick = (e) => {
       if (!dropdown.contains(e.target)) {
         dropdown.classList.remove("open");
-        trigger.setAttribute("aria-expanded", "false");
+        trigger?.setAttribute("aria-expanded", "false");
       }
     };
-    document.removeEventListener("click", outside);
-    document.addEventListener("click", outside);
+
+    document.addEventListener("click", onOutsideClick);
   };
 
-  addTapLogic();
-  window.addEventListener("resize", () => {
-    // re-evaluate on resize once
-    addTapLogic();
-  });
+  enableTapDropdown();
+  window.addEventListener("resize", enableTapDropdown);
 }
 
-// Flip card on click
-const calcCard = document.getElementById("calcCard");
-if (calcCard) {
-  calcCard.addEventListener("click", () => {
-    calcCard.classList.toggle("flipped");
+// ------------------------------
+// Flip cards (works for ALL cards)
+// ------------------------------
+document.querySelectorAll(".flip-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
   });
-}
-const notesCard = document.getElementById("notesCard");
-if (notesCard) {
-  notesCard.addEventListener("click", () => {
-    notesCard.classList.toggle("flipped");
+});
+
+// Optional: prevent the link click from also re-flipping the card
+// (So clicking "Go to ..." just navigates cleanly.)
+document.querySelectorAll(".flip-card a").forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.stopPropagation();
   });
-}
-const dictCard = document.getElementById("dictCard");
-if (dictCard) {
-  dictCard.addEventListener("click", () => {
-    dictCard.classList.toggle("flipped");
-  });
-}
-// ---- Dark mode toggle with persistence ----------------------------
-(function () {
+});
+
+// ------------------------------
+// Dark mode toggle (with persistence)
+// ------------------------------
+(() => {
   const btn = document.getElementById("themeToggle");
   if (!btn) return;
 
@@ -70,15 +81,16 @@ if (dictCard) {
 
   // Load saved theme or system preference
   const saved = localStorage.getItem("theme"); // 'dark' | 'light' | null
+
   if (saved) {
     document.body.classList.toggle("dark", saved === "dark");
   } else {
-    // default to system preference if nothing saved
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
     document.body.classList.toggle("dark", prefersDark);
   }
+
   setIcon();
 
   // Toggle on click and save
