@@ -149,3 +149,13 @@
     border-radius: 0;
   }
 }
+
+/* Draggable launcher */
+#bolt-launcher {
+  user-select: none;
+  touch-action: none; /* important for mobile dragging */
+}
+#bolt-launcher.bolt-dragging {
+  cursor: grabbing;
+}
+

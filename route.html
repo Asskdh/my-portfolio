@@ -9,9 +9,6 @@
 </head>
 
 <body>
-  <!-- =========================
-       HEADER (matches CSS exactly)
-       ========================= -->
   <header class="topbar">
     <a href="index.html" class="homeBtn">Home</a>
 
@@ -36,23 +33,18 @@
     <div></div>
   </header>
 
-  <!-- =========================
-       STAGE
-       ========================= -->
   <main class="stage" id="stage">
-    <div class="routeBanner" id="routeBanner">
+    <div class="routeBanner">
       <div class="routeTitle">Shortest Route</div>
       <div class="routeText" id="routeText">—</div>
-      <div class="routeSub" id="routeSub">Type From/To then press Enter.</div>
+      <div class="routeSub" id="routeSub">Loading connections…</div>
     </div>
 
     <div class="sceneStack">
-      <!-- =========================
-           PLANET SCENE
-           ========================= -->
+      <!-- PLANET -->
       <section class="planetScene" id="planetScene">
         <div class="planetWrap" id="planetWrap">
-          <div class="planet" aria-label="planet">
+          <div class="planet">
             <div class="earthTexture"></div>
             <div class="earthShading"></div>
 
@@ -60,7 +52,7 @@
             <div class="cloud cloudB"></div>
             <div class="cloud cloudC"></div>
 
-            <div class="plane" aria-label="plane">✈️</div>
+            <div class="plane">✈️</div>
           </div>
         </div>
 
@@ -69,15 +61,11 @@
         </div>
       </section>
 
-      <!-- =========================
-           MAP SCENE (game-style)
-           ========================= -->
-      <section class="mapScene" id="mapScene" aria-label="stylized map">
+      <!-- MAP -->
+      <section class="mapScene" id="mapScene">
         <div class="floatingMap">
           <div class="mapTop">
-            <svg class="worldSvg"
-                 viewBox="0 0 1200 520"
-                 aria-hidden="true"
+            <svg class="worldSvg" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
 
               <defs>
@@ -86,83 +74,26 @@
                   <stop offset="0.6" stop-color="rgba(122,215,197,0.22)"/>
                   <stop offset="1" stop-color="rgba(78,168,255,0.18)"/>
                 </linearGradient>
-
-                <filter id="softGlow">
-                  <feGaussianBlur stdDeviation="3" result="b"/>
-                  <feMerge>
-                    <feMergeNode in="b"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
               </defs>
 
-              <!-- Ocean background -->
+              <!-- background -->
               <rect x="0" y="0" width="1200" height="520" rx="32" ry="32" fill="url(#oceanGrad)"/>
 
-              <!-- Left land -->
-              <path filter="url(#softGlow)" fill="rgba(255,255,255,0.22)"
-                d="M0,520 L0,170
-                   C120,120 220,120 320,170
-                   C420,220 470,245 520,310
-                   C560,360 560,430 520,520 Z"/>
+              <!-- dashed route (ONLY between 2 cities) -->
+              <path id="routeLineDynamic"
+                    d=""
+                    fill="none"
+                    stroke="rgba(255,255,255,0.95)"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    stroke-dasharray="12 14"
+                    opacity="0" />
 
-              <!-- Diagonal sea (top-left -> bottom-right) -->
-              <path id="seaShape"
-                d="M0,110
-                   C180,140 330,190 470,260
-                   C620,335 760,400 950,455
-                   C1060,488 1140,505 1200,520
-                   L1200,520
-                   C1120,495 1000,455 860,395
-                   C720,335 590,280 430,215
-                   C300,155 160,120 0,100
-                   Z"
-                fill="rgba(78,168,255,0.26)"/>
-
-              <!-- Waves -->
-              <g opacity="0.22" stroke="rgba(255,255,255,0.85)" stroke-width="3" fill="none">
-                <path d="M40,140 C220,165 360,220 500,290 C650,365 800,425 1120,500" />
-                <path d="M20,175 C210,200 350,255 490,325 C640,395 800,455 1080,515" />
-                <path d="M80,115 C260,140 410,200 560,275 C710,350 860,420 1160,505" />
-              </g>
-
-              <!-- Right land (mountain region) -->
-              <path filter="url(#softGlow)" fill="rgba(255,255,255,0.20)"
-                d="M720,520
-                   C690,420 690,320 740,250
-                   C820,150 950,150 1040,210
-                   C1125,265 1185,350 1200,430
-                   L1200,520 Z"/>
-
-              <!-- Subtle grid -->
-              <g opacity="0.14" stroke="rgba(255,255,255,0.85)">
-                <path d="M0,130 L1200,130" />
-                <path d="M0,260 L1200,260" />
-                <path d="M0,390 L1200,390" />
-                <path d="M240,0 L240,520" />
-                <path d="M480,0 L480,520" />
-                <path d="M720,0 L720,520" />
-                <path d="M960,0 L960,520" />
-              </g>
-
-              <!-- Route line (keep near end so it's on top) -->
-                <path id="routeLine"
-                  d="M170,410
-                     C330,320 470,355 610,310
-                     C700,280 760,270 835,250
-                     C930,220 990,190 1050,160"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.95)"
-                  stroke-width="6"
-                  stroke-linecap="round"
-                  stroke-dasharray="12 14"
-                  opacity="0"
-                />
-              <!-- Plane ON the dashed line (very slow so it "never arrives") -->
+              <!-- plane on dashed line -->
               <g id="planeOnPath">
                 <text x="0" y="0" font-size="44">✈️</text>
                 <animateMotion dur="120s" repeatCount="indefinite" rotate="auto">
-                  <mpath xlink:href="#routeLine"></mpath>
+                  <mpath xlink:href="#routeLineDynamic"></mpath>
                 </animateMotion>
               </g>
             </svg>
@@ -171,11 +102,9 @@
             <div class="city cityFrom" id="cityFrom">
               <div class="cityLabel" id="pinFromLabel">From</div>
               <div class="cityBase"></div>
-
               <div class="buildings">
                 <div class="tree t1"></div>
                 <div class="tree t2"></div>
-
                 <div class="b b1"></div>
                 <div class="b b2"></div>
                 <div class="tower"></div>
@@ -188,11 +117,9 @@
             <div class="city cityTo" id="cityTo">
               <div class="cityLabel" id="pinToLabel">To</div>
               <div class="cityBase"></div>
-
               <div class="buildings">
                 <div class="tree t1"></div>
                 <div class="tree t2"></div>
-
                 <div class="b b1"></div>
                 <div class="b b2"></div>
                 <div class="tower"></div>
@@ -209,7 +136,6 @@
     </div>
   </main>
   <link rel="stylesheet" href="assistant.css">
-<script src="assistant.js"></script>
-
+  <script src="assistant.js"></script>
 </body>
 </html>
